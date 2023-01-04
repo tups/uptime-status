@@ -4,7 +4,8 @@ import Link from './link';
 function Header() {
 
   useEffect(() => {
-    document.title = window.Config.SiteName;
+    document.title = window.Config.MetaTitle;
+    document.getElementsByTagName('meta')["description"].content = window.Config.MetaDescription;
   }, []);
 
   return (
