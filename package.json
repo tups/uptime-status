@@ -3,8 +3,8 @@
   "version": "2.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "BUILD_PATH='./htdocs' react-scripts build"
+    "start": "set \"BUILD_PATH=htdocs\" && react-scripts start",
+    "build": "set \"BUILD_PATH=htdocs\" && react-scripts build"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -18,8 +18,7 @@
   "browserslist": {
     "production": [
       ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "not dead"
     ],
     "development": [
       "last 1 chrome version",

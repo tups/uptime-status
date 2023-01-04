@@ -7,7 +7,7 @@ import Link from './link';
 function UptimeRobot({ apikey }) {
 
   const status = {
-    ok: 'En ligne',
+    ok: 'Opérationnel',
     down: 'Inaccessible',
     unknow: 'Inconnue'
   };
@@ -47,10 +47,10 @@ function UptimeRobot({ apikey }) {
         })}
       </div>
       <div className='summary'>
-        <span>De nos jours</span>
+        <span></span>
         <span>
           {site.total.times
-            ? `Échecs au cours des ${CountDays} derniers jours : ${site.total.times} fois，pendant ${formatDuration(site.total.duration)}，Disponibilité moyenne : ${site.average}%`
+            ? `Disponibilité moyenne : ${site.average}%`
             : `Disponibilité des derniers ${CountDays} jours pendant ${site.average}%`}
         </span>
         <span>{site.daily[site.daily.length - 1].date.format('YYYY-MM-DD')}</span>

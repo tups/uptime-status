@@ -23,7 +23,7 @@ function App() {
           ))}
         </div>
         <div id='footer'>
-          <p>basé sur <Link to='https://uptimerobot.com/' text='UptimeRobot' />Production d'interface, fréquence de détection 5 minutes</p>
+          <p>Basé sur <Link to='https://uptimerobot.com/' text='UptimeRobot' rel={'nofollow'} />, fréquence de détection 5 minutes</p>
           <p>&copy; 2022 <Link to='https://www.beekube.com/' text='beekube.com' />, Version {Package.version}</p>
         </div>
       </div>
