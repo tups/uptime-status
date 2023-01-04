@@ -1,25 +1,27 @@
 window.Config = {
 
-  // 显示标题
-  SiteName: 'Beekube',
+    // 显示标题
+    SiteName: 'Beekube',
+    MetaTitle: 'Disponibilité du service Beekube',
+    MetaDescription: 'Retrouvez sur ce tableau de bord, les disponibilités des services Beekube',
 
-  // UptimeRobot Api Keys
-  // 支持 Monitor-Specific 和 Read-Only
-  ApiKeys: [
-    'm792939739-7ac352fd3984a002d79df28d',
-  ],
+    // Clés API UptimeRobot
+    // Prend en charge les moniteurs spécifiques et en lecture seule
+    ApiKeys: [
+        'm792939739-7ac352fd3984a002d79df28d',
+    ],
 
-  // 日志天数
-  CountDays: 90,
+    // Nombre de jours
+    CountDays: 90,
 
-  // 是否显示检测站点的链接
-  ShowLink: true,
+    // Afficher ou non les liens vers les sites de détection
+    ShowLink: true,
 
-  // 导航栏菜单
-  Navi: [
-    {
-      text: 'Homepage',
-      url: 'https://www.beekube.com/'
-    },
-  ],
+    // menu de la barre de navigation
+    Navi: [
+        {
+            text: 'Homepage',
+            url: 'https://www.beekube.com/'
+        },
+    ],
 };
