@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import {useMemo} from 'react';
 import Link from './link';
 import Header from './header';
 import UptimeRobot from './uptimerobot';
@@ -13,6 +13,9 @@ function App() {
     return [];
   }, []);
 
+
+
+
   return (
     <>
       <Header />
@@ -23,8 +26,8 @@ function App() {
           ))}
         </div>
         <div id='footer'>
-          <p>Basé sur <Link to='https://uptimerobot.com/' text='UptimeRobot' rel={'nofollow'} />, fréquence de détection 5 minutes</p>
-          <p>&copy; 2022 <Link to='https://www.beekube.com/' text='beekube.com' />, Version {Package.version}</p>
+          <p>Basé sur <Link to='https://uptimerobot.com/' text={'UptimeRobot'} rel={'nofollow'} />, fréquence de détection 5 minutes</p>
+          <p>&copy; 2022 <Link to='https://www.beekube.com/' text={'beekube.com'} />, Version {Package.version}</p>
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
 {
   "name": "uptime-status",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "MIT",
   "scripts": {
     "start": "set \"BUILD_PATH=htdocs\" && react-scripts start",
@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "dayjs": "^1.11.3",
+    "i18next": "^22.4.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
