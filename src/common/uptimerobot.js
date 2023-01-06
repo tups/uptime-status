@@ -42,16 +42,38 @@ export async function GetMonitors(apikey, days) {
       }
     });
 
-    const total = monitor.logs.reduce((total, log) => {
+    const logs = [];
+    let lastDown = {"reason": {
+        "code": "999999",
+        "detail": "Keyword Found"
+      }};
+    
+    const total = monitor.logs.reverse().reduce((total, log) => {
       if (log.type === 1) {
         const date = dayjs.unix(log.datetime).format('YYYYMMDD');
         total.duration += log.duration;
         total.times += 1;
         daily[map[date]].down.duration += log.duration;
         daily[map[date]].down.times += 1;
+        lastDown = log;
       }
+      
+      let logUp = {...log};
+      logUp.reason = lastDown.reason;
+  
+      switch (logUp.reason.code) {
+        case "333333":
+          logUp.reason.detail = "Erreur d'accès réseau ou serveur indisponible (Connection Timeout)"
+          break;
+      }
+  
+      logs.push(logUp);
+      
       return total;
     }, { times: 0, duration: 0 });
+  
+    const logsOuput = logs.reverse();
+    logsOuput.pop();
 
     const result = {
       id: monitor.id,
@@ -61,6 +83,7 @@ export async function GetMonitors(apikey, days) {
       daily: daily,
       total: total,
       status: 'unknow',
+      logs: logsOuput
     };
 
     if (monitor.status === 2) result.status = 'ok';
