@@ -31,38 +31,43 @@ function UptimeRobot({apikey}) {
           <div className='site well'>
               
               <div className='meta'>
-                  <span className='name' dangerouslySetInnerHTML={{__html: site.name}}/>
-                  {ShowLink && <Link className='link' to={site.url} text={site.name}/>}
-                  <span
-                    className={'average'}>{site.total.times ? `${site.average}%` : `Disponibilité des derniers ${CountDays} jours pendant ${site.average}%`}</span>
-                  <span className={'status ' + site.status}>{status[site.status]}</span>
+                  <div className={'meta__app'}>
+                      <span className='name' dangerouslySetInnerHTML={{__html: site.name}}/>
+                      {ShowLink && <Link className='link' to={site.url} text={site.name}/>}
+                      <span className={'average'}>{site.total.times ? `${site.average}%` : `Disponibilité des derniers ${CountDays} jours pendant ${site.average}%`} <span className='average__unit'>sur {CountDays} jours</span></span>
+                  </div>
+                  
+                  <div className={'status ' + site.status}>{status[site.status]}</div>
               </div>
-              <div className='timeline'>
-                  {site.daily.map((data, index) => {
-                      let status = '';
-                      let text = data.date.format('YYYY-MM-DD ');
-                      if (data.uptime >= 100) {
-                          status = 'ok';
-                          text += `OK : ${formatNumber(data.uptime)}%`;
-                      } else if (data.uptime <= 0 && data.down.times === 0) {
-                          status = 'none';
-                          text += 'Pas de données';
-                      } else {
-                          status = 'down';
-                          text += `Défaut ${data.down.times} fois，pendant ${formatDuration(data.down.duration)}，en ligne ${formatNumber(data.uptime)}%`;
-                      }
-                      return (
-                        <>
-                            <i id={`day-${index}`} key={index} className={status} data-st={data.uptime}
-                               style={{'--average': getColor(data.uptime)}}/>
-                            <Tooltip key={`tooltip-day-${index}`} anchorId={`day-${index}`} className='tooltip'
-                                     place='top' type='dark' effect='solid'>
-                                <div>{text}</div>
-                            </Tooltip>
-                        </>
-                      )
-                  })}
+              <div className='timeline__block'>
+                  <div className='timeline'>
+                      {site.daily.map((data, index) => {
+                          let status = '';
+                          let text = data.date.format('YYYY-MM-DD ');
+                          if (data.uptime >= 100) {
+                              status = 'ok';
+                              text += `OK : ${formatNumber(data.uptime)}%`;
+                          } else if (data.uptime <= 0 && data.down.times === 0) {
+                              status = 'none';
+                              text += 'Pas de données';
+                          } else {
+                              status = 'down';
+                              text += `Défaut ${data.down.times} fois，pendant ${formatDuration(data.down.duration)}，en ligne ${formatNumber(data.uptime)}%`;
+                          }
+                          return (
+                            <>
+                                <i id={`day-${index}`} key={index} className={status} data-st={data.uptime}
+                                   style={{'--average': getColor(data.uptime)}}/>
+                                <Tooltip key={`tooltip-day-${index}`} anchorId={`day-${index}`} className='tooltip'
+                                         place='top' type='dark' effect='solid'>
+                                    <div>{text}</div>
+                                </Tooltip>
+                            </>
+                          )
+                      })}
+                  </div>
               </div>
+              
               <div className='summary'>
                   <span>{site.daily[site.daily.length - 1].date.format('YYYY-MM-DD')}</span>
               </div>
